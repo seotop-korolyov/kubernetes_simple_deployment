@@ -6,5 +6,5 @@ metadata:
 
 data:
   APP_ENV: development
-  LOG_LEVEL: debug
+  LOG_LEVEL: info
   APP_COLOR: blue
