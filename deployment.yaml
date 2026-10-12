@@ -25,6 +25,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: web-config
+            - secretRef:
+                name: web-secret
 
           resources:
             requests:
