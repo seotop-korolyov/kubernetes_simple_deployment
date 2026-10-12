@@ -5,7 +5,6 @@ metadata:
   name: web
 
 spec:
-  replicas: 3
 
   selector:
     matchLabels:
@@ -22,6 +21,10 @@ spec:
           image: nginx:1.27
           ports:
             - containerPort: 80
+          
+          envFrom:
+            - configMapRef:
+                name: web-config
 
           resources:
             requests:
