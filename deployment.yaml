@@ -16,6 +16,11 @@ spec:
         app: web
         environment: test
     spec:
+      volumes:
+        - name: credentials
+          secret: 
+            secretName: web-secret
+
       containers:
         - name: nginx
           image: nginx:1.27
@@ -27,6 +32,11 @@ spec:
                 name: web-config
             - secretRef:
                 name: web-secret
+
+          volumeMounts:
+            - name: credentials
+              mountPath: /etc/secrets
+              readOnly: true
 
           resources:
             requests:
