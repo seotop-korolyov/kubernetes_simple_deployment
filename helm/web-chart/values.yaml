@@ -1,0 +1,42 @@
+image:
+  repository: nginx
+  tag: "1.27"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 64Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+
+config:
+  appEnv: development
+  logLevel: info
+  appColor: blue
+
+secret:
+  existingSecret: web-secret
+
+probes:
+  readiness:
+    path: /
+    port: 80
+    initialDelaySeconds: 10
+    periodSeconds: 5
+  liveness:
+    path: /
+    port: 80
+    initialDelaySeconds: 15
+    periodSeconds: 10

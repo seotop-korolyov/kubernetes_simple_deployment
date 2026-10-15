@@ -1,0 +1,12 @@
+# Local secrets
+secret.yaml
+**/secret.yaml
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
