@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  helm-validation:
+  helm-lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,6 +19,17 @@ jobs:
 
       - name: Lint Helm chart
         run: helm lint ./helm/web-chart
+
+  helm-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.17.3
 
       - name: Render Helm templates
         run: helm template web-dev ./helm/web-chart --namespace helm-demo > /tmp/helm-rendered.yaml
