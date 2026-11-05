@@ -41,3 +41,8 @@ probes:
     port: 80
     initialDelaySeconds: 15
     periodSeconds: 10
+
+ingress:
+  enabled: true
+  className: traefik
+  host: docker.seotop.com.ua
