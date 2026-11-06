@@ -1,20 +1,20 @@
 deployment:
   replicas: 1
-
-service:
-  spec:
-    type: NodePort
-
 hostNetwork: false
-
-ports:
-  web:
-    nodePort: 30081
-
-  websecure: 
-    nodePort: 30443
-
 ingressClass:
   enabled: true
   isDefaultClass: false
   name: traefik
+ports:
+  web:
+    nodePort: 30081
+    hostPort: 80
+  websecure:
+    nodePort: 30443
+service:
+  spec:
+    type: NodePort
+
+providers:
+  kubernetesIngress:
+    nativeLBByDefault: true
