@@ -3,10 +3,9 @@ image:
   tag: "1.27"
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
   targetPort: 80
-  nodePort: 30080
 
 resources:
   requests:
@@ -41,3 +40,8 @@ probes:
     port: 80
     initialDelaySeconds: 15
     periodSeconds: 10
+
+ingress:
+  enabled: true
+  className: traefik
+  host: docker.seotop.com.ua
