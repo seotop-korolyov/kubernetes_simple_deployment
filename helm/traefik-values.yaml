@@ -1,5 +1,9 @@
 deployment:
   replicas: 1
+
+updateStrategy:
+    type: Recreate
+
 hostNetwork: false
 ingressClass:
   enabled: true
@@ -11,6 +15,8 @@ ports:
     hostPort: 80
   websecure:
     nodePort: 30443
+    hostPort: 443
+
 service:
   spec:
     type: NodePort

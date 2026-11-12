@@ -45,3 +45,4 @@ ingress:
   enabled: true
   className: traefik
   host: docker.seotop.com.ua
+  tlsSecretName: docker-production-tls
